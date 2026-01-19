@@ -46,9 +46,6 @@ export class MainComponent {
 
 
   }
-  
-
-
   data: Products[] = []
   categoryArr: Category[] = []
 

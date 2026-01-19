@@ -1,0 +1,90 @@
+.hdr {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 50px;
+}
+.hdr h1 {
+  font-weight: bold;
+}
+
+.categoryCont {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+  transition: 0.4s ease-in-out;
+  border-bottom: red solid 2.5px;
+  justify-self: center;
+}
+.categoryCont .categoryBck {
+  cursor: pointer;
+  padding: 10px 10px;
+}
+.categoryCont .categoryBck p {
+  font-size: 18px;
+}
+.categoryCont .categoryBck:hover {
+  background-color: red;
+  transition: 0.4s ease-in-out;
+}
+.categoryCont .categoryBck:hover .categoryName {
+  color: white;
+  transition: 0.4s ease-in-out;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  justify-self: center;
+  margin-top: 50px;
+}
+.grid .mainCont {
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  height: 420px;
+  border-radius: 20px;
+  border: rgb(80, 79, 79) solid 2px;
+  overflow: hidden;
+}
+.grid .mainCont .top {
+  width: 100%;
+  height: 200px;
+  background-color: gray;
+}
+.grid .mainCont .top img {
+  background-size: cover;
+  width: 100%;
+  margin-top: -30px;
+}
+.grid .mainCont .bottom {
+  display: flex;
+  flex-direction: column;
+}
+.grid .mainCont .bottom .name {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 20px;
+}
+.grid .mainCont .bottom .name p {
+  font-weight: bold;
+  font-size: 18px;
+}
+.grid .mainCont .bottom .spiciness {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.grid .mainCont .bottom .spiciness p {
+  font-size: 14px;
+}
+.grid .mainCont .bottom .nutVeg {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=main.component.css.map */

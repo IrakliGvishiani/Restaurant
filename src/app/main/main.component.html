@@ -22,15 +22,45 @@
 
   </div>
 
-<div class="grid">
+<div class="main">
+  <div class="filter"></div>
+
+  <div class="grid">
   <div *ngFor="let el of data" class="mainCont">
   <div class="top">
     <img [src]="el.image" alt="">
   </div>
 
   <div class="bottom">
+    <div class="name">
+      <p>{{el.name}}</p>
+    </div>
+    <div class="spiciness">
+      <p>Spiciness:{{el.spiciness}}</p>
+    </div>
+
+    <div class="nutVeg" >
+      <div class="nut">
+      <i *ngIf="el.nuts == true  " style="color: green;" class="fa-solid fa-circle-check"></i> 
+      <i *ngIf="el.nuts == false" style="color: red;" class="fa-solid fa-circle-xmark"></i>
+      <p style="margin: 0;">:Nuts</p>
+      </div>
+      <div class="veg">
+         <i *ngIf="el.vegeterian == true  " style="color: green;" class="fa-solid fa-circle-check"></i> 
+      <i *ngIf="el.vegeterian == false" style="color: red;" class="fa-solid fa-circle-xmark"></i>
+      <p style="margin: 0;">:Vegetarian</p>
+      </div>
+    </div>
+
+    <div class="very-bottom">
+      <p style="font-weight: bold;font-size: 17px;">${{el.price}}</p>
+      <a href="#" class="btn btn-danger">Add To Cart</a>
+    </div>
 
   </div>
 </div>
 </div>
+
+</div>
+
 
