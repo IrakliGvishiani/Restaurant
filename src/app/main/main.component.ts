@@ -68,11 +68,59 @@ export class MainComponent {
     })
     
   }
+    check = false
+    check2 = false
+
+  value: number | null = null;
+
+onSpicinessChange(event: Event) {
+  const input = event.target as HTMLInputElement;
+  this.value = Number(input.value);
+}
+
+  checked(){
+    if(this.check == false){
+      this.check = true
+    }
+    else if(this.check == true){
+      this.check = false
+    }
+
+}
+
+  checked2(){
+        if(this.check2 == false){
+      this.check2 = true
+    }
+    else if(this.check2 == true){
+      this.check2 = false
+    }
+  }
+
+
+  getFiltered(){
+    this.api.gett(`https://restaurant.stepprojects.ge/api/Products/GetFiltered?vegeterian=${this.check2}&nuts=${this.check}&spiciness=${this.value}`)
+    .subscribe({
+      next: (resp : any) => {
+        this.data = resp
+      },
+      error: err => console.log(err)
+      
+    })
+  }
+
+  reset(){
+    this.showAll()
+    this.check = false
+    this.check2 = false
+    this.value = 0
+  }
+
 
   data: Products[] = []
   categoryArr: Category[] = []
 
-  
+
   
   
 }

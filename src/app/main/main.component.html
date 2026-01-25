@@ -26,7 +26,55 @@
   </div>
 
 <div class="main">
-  <div class="filter"></div>
+  <div class="filter">
+    <div class="topFilter">
+      <p>Filter</p>
+      <i class="fa-solid fa-filter"></i>
+    </div>
+
+    <div class="rangeFilter" style="margin-top: 20px;">
+  <p style="margin-bottom: 5px;">
+    Spiciness:
+    <span *ngIf="value !== null; else placeholder">
+      {{ value }}
+    </span>
+
+    <ng-template #placeholder>
+      Not Chosen
+    </ng-template>
+  </p>
+
+  <input
+    type="range"
+    min="0"
+    max="4"
+    [value]="value !== null ? value : 0"
+    (input)="onSpicinessChange($event)"
+    style="width: 180px; cursor: pointer;"
+    class="custom-range range-slider"
+  >
+</div>
+
+  <div class="checkboxFilter" style="margin-top: 30px;">
+    <div class="nutsCheckboxDiv">
+      <div (click)="checked()" class="chech">
+        <i *ngIf="check" class="fa-solid fa-check"></i>
+      </div>
+      <p>No Nuts</p>
+    </div>
+    <div class="veganCheckboxDiv">
+            <div (click)="checked2()" class="chech">
+        <i *ngIf="check2" class="fa-solid fa-check"></i>
+      </div>
+      <p>Vegetarian Only</p>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="resetBtn" (click)="reset()">RESET</button>
+    <button class="applyBtn" (click)="getFiltered()">APPLY FILTER</button>
+  </div>
+  </div>
 
   <div class="grid">
   <div *ngFor="let el of data" class="mainCont">
