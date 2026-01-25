@@ -14,7 +14,10 @@
   </div>
 
   <div class="categoryCont">
-    <div  *ngFor="let el of categoryArr" class="categoryBck">
+    <div (click)="showAll()" class="categoryBck">
+      <p class="categoryName">All</p>
+    </div>
+    <div (click)="filterCategory(el.id)" *ngFor="let el of categoryArr" class="categoryBck">
           <p class="categoryName">
           {{el.name}}  
     </p>

@@ -17,18 +17,9 @@ export class MainComponent {
 
 
   ngOnInit(){
-    this.api.gett('https://restaurant.stepprojects.ge/api/Products/GetAll')
-    .subscribe({
-      next: (resp : any) => {
-      this.data = resp
-      console.log(this.data);
-      }
-      ,
-      error : err => {
-        console.log(err);
-        
-      }
-    })
+
+     this.showAll()
+
 
 
     this.api.gett('https://restaurant.stepprojects.ge/api/Categories/GetAll')
@@ -46,9 +37,42 @@ export class MainComponent {
 
 
   }
+
+      showAll(){
+            this.api.gett('https://restaurant.stepprojects.ge/api/Products/GetAll')
+    .subscribe({
+      next: (resp : any) => {
+      this.data = resp
+      console.log(this.data);
+      }
+      ,
+      error : err => {
+        console.log(err);
+        
+      }
+    })
+    }
+
+  filterCategory(id: number){
+    this.api.gett(`https://restaurant.stepprojects.ge/api/Categories/GetCategory/${id}`)
+    .subscribe({
+      next: (resp : any) => {
+        // console.log(resp.products);
+        this.data = resp.products
+        
+      },
+      error: err => {
+        console.log(err);
+        
+      }
+    })
+    
+  }
+
   data: Products[] = []
   categoryArr: Category[] = []
 
+  
   
   
 }
