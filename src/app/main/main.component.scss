@@ -284,6 +284,30 @@
 }
 
 
+.photo{
+    display: flex;
+    width: 100%;
+    
+    background-image: url('https://images.pexels.com/photos/29122093/pexels-photo-29122093.jpeg');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    filter: brightness(80%);
+    height: 450px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    p{
+        color: white;
+        font-size: 30px;
+        font-weight: bold;
+        
+    }
+}
+
+
       .mainCont:hover{
         cursor: pointer;
         box-shadow: 0px 0px 30px rgb(0, 0, 0);

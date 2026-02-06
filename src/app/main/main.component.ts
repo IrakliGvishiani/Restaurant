@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../header/services/api.service';
-import { Products } from '../../models/products';
+import { Products } from '../models/products';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Category } from '../../models/category';
+import { Category } from '../models/category';
 
 @Component({
   selector: 'app-main',
@@ -79,22 +79,24 @@ onSpicinessChange(event: Event) {
 }
 
   checked(){
-    if(this.check == false){
-      this.check = true
-    }
-    else if(this.check == true){
-      this.check = false
-    }
-
+    // if(this.check == false){
+    //   this.check = true
+    // }
+    // else if(this.check == true){
+    //   this.check = false
+    // }
+    this.check = !this.check
 }
 
   checked2(){
-        if(this.check2 == false){
-      this.check2 = true
-    }
-    else if(this.check2 == true){
-      this.check2 = false
-    }
+    //     if(this.check2 == false){
+    //   this.check2 = true
+    // }
+    // else if(this.check2 == true){
+    //   this.check2 = false
+    // }
+
+    this.check2 = !this.check2
   }
 
 

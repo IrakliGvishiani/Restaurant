@@ -2,20 +2,28 @@
 
 <div class="hdr" [class.scrolled]="isScrolled">
     <div class="logo">
-        <img src="https://restaurant.stepprojects.ge/images/logo.png" alt="">
+        <img (click)="goToRegister()" src="https://restaurant.stepprojects.ge/images/logo.png" alt="">
     </div>
     <nav>
         <ul>
-            <li class="motoo"><a class="cart" href="">Cart </a><i class="fa-solid fa-motorcycle"></i></li>
+            <li class="motoo"><a class="cart" href="">Cart </a>
             <li><a class="reg" href="">Register</a></li>
         </ul>
     </nav>
+    <div class="burgerDiv" (click)="toggleMenu()">
+        <div class="burger" [class.active]="show">
+            <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        </div>
+    </div>
+
+    <div *ngIf="show" class="navii activv">
+              <li class="motoo"><a class="cart" href="">Cart </a>
+            <li ><a class="reg"  >Register</a></li>
+    </div>
 </div>
 
-<div class="photo">
-    <img src="" alt="">
-    <p>Fast and efficient, online ordering you must try.</p>
-</div>
 
 
 
