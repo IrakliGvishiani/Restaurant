@@ -1,1 +1,54 @@
-<p>register works!</p>
+
+
+<div class="photo">
+    <img src="" alt="">
+    <!-- <p>Fast and efficient, online ordering you must try.</p> -->
+</div>
+
+        <div class="container">
+                        <form #reg="ngForm" (ngSubmit)="register(reg)">
+                    <h1>Create Account</h1>
+        <p class="subtitle">Fill all the information below!</p>
+                 
+        <div class="input-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" placeholder="" required
+             name="firstName" ngModel>
+        </div>
+
+         <div class="input-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" placeholder="" required
+             name="lastName" ngModel>
+        </div>
+
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="example@email.com" required
+             name="email" ngModel>
+        </div>
+
+         <div class="input-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input type="text" id="phoneNumber" placeholder="+995" required
+             name="phoneNumber" ngModel>
+        </div>
+
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="••••••••" required
+             name="password" ngModel>
+        </div>
+
+
+        <button class="btn" type="submit">Register</button>
+
+    
+
+        <div class="signup-link">
+            Have an Account? <a [routerLink]="'/log-in'">Log in</a>
+        </div>
+
+        </form>
+        </div>
+

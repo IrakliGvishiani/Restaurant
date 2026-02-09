@@ -85,10 +85,11 @@
             display: flex;
             gap: 50px;
             li{
-                a{
+                span{
                     color: rgb(255, 255, 255);
                     font-size: 23px;
                     font-weight: bold;
+                    cursor: pointer;
                 }
 
                 .cart{
@@ -132,6 +133,11 @@
         }
     }
 }
+
+ .activ{
+    text-decoration: underline;
+    
+ }
 
 
 

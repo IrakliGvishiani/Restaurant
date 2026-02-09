@@ -2,12 +2,14 @@
 
 <div class="hdr" [class.scrolled]="isScrolled">
     <div class="logo">
-        <img (click)="goToRegister()" src="https://restaurant.stepprojects.ge/images/logo.png" alt="">
+        <img  src="https://restaurant.stepprojects.ge/images/logo.png" alt="">
     </div>
     <nav>
         <ul>
-            <li class="motoo"><a class="cart" href="">Cart </a>
-            <li><a class="reg" href="">Register</a></li>
+            <li *ngIf="isAuth()" class="motoo"><span class="cart" href="">Cart </span>
+            <li *ngIf="!isAuth()"><span [routerLink]="'/register'" [routerLinkActive]="active" class="reg" href="">Register</span></li>
+            <li *ngIf="!isAuth()"> <span [routerLink]="'/log-in'" [routerLinkActive]="active" class="reg" href="">Log in</span></li>
+            <li *ngIf="isAuth()" (click)="logOut()"> <span  class="reg" href="">Log out</span></li>
         </ul>
     </nav>
     <div class="burgerDiv" (click)="toggleMenu()">
