@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { ApiService } from '../header/services/api.service';
+import { ApiService } from '../services/api.service';
 import Swal from 'sweetalert2'
 import { Route, Router, RouterLink } from '@angular/router';
 @Component({

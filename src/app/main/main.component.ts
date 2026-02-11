@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../header/services/api.service';
+import { ApiService } from '../services/api.service';
 import { Products } from '../models/products';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';

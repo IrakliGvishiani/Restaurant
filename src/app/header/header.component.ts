@@ -2,7 +2,7 @@ import { Component, effect, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterOutlet, RouterLinkActive } from '@angular/router';
 import { routes } from '../app.routes';
-import { AuthService } from './services/auth.service';
+import { AuthService } from '../services/auth.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-header',

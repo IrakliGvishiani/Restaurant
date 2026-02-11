@@ -1,0 +1,11 @@
+
+
+<div class="overlay" *ngIf="showDialog()">
+  <div class="dialog">
+    <h3>Error</h3>
+
+    <p>{{errMessage() }}</p>
+
+    <button (click)="closeDilsog()">OK</button>
+  </div>
+</div>

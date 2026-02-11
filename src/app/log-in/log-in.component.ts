@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { ApiService } from '../header/services/api.service';
+import { ApiService } from '../services/api.service';
 import Swal from 'sweetalert2';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../header/services/auth.service';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-log-in',
   imports: [FormsModule, RouterLink],
@@ -20,10 +20,10 @@ export class LogInComponent {
         this.http.postt("https://rentcar.stepprojects.ge/api/Users/login", {
           phoneNumber : inputs.value.phoneNumber,
           password : inputs.value.password,
-          email : "",
-          firstName : "",
-          lastName : "",
-          role : ""
+          // email : "",
+          // firstName : "",
+          // lastName : "",
+          // role : ""
         })
         .subscribe({
           next: resp => {
