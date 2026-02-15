@@ -25,6 +25,11 @@ export const routes: Routes = [
         canActivate: [defendGuard]
     },
     {
+         path: 'cart',
+        loadComponent: () => import("./cart/cart.component").then(comp => comp.CartComponent),
+        canActivate: [authGuard]
+    },
+    {
         path: '**',
         component: ErrorComponent
     }

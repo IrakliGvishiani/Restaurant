@@ -2,11 +2,11 @@
 
 <div class="hdr" [class.scrolled]="isScrolled">
     <div class="logo">
-        <img  src="https://restaurant.stepprojects.ge/images/logo.png" alt="">
+        <img style="cursor:pointer;" [routerLink]="'/main'"  src="https://restaurant.stepprojects.ge/images/logo.png" alt="">
     </div>
     <nav>
         <ul>
-            <li *ngIf="isAuth()" class="motoo"><span class="cart" href="">Cart </span>
+            <li *ngIf="isAuth()" class="motoo"><span [routerLink]="'/cart'" class="cart" href="">Cart </span>
             <li *ngIf="!isAuth()"><span [routerLink]="'/register'" [routerLinkActive]="active" class="reg" href="">Register</span></li>
             <li *ngIf="!isAuth()"> <span [routerLink]="'/log-in'" [routerLinkActive]="active" class="reg" href="">Log in</span></li>
             <li *ngIf="isAuth()" (click)="logOut()"> <span  class="reg" href="">Log out</span></li>
@@ -21,8 +21,10 @@
     </div>
 
     <div *ngIf="show" class="navii activv">
-              <li class="motoo"><a class="cart" href="">Cart </a>
-            <li ><a class="reg"  >Register</a></li>
+              <li (click)="show = false"  *ngIf="isAuth()" class="motoo"><a [routerLink]="'/cart'" class="cart" href="">Cart </a>
+            <li (click)="show = false" *ngIf="!isAuth()"><a  class="reg" [routerLink]="'/register'" >Register</a></li>
+            <li (click)="show = false" *ngIf="!isAuth()"><a class="reg"  [routerLink]="'/log-in'">Log In</a></li>
+            <li (click)="show = false" style="color: #0D6EDF;" *ngIf="isAuth()" (click)="logOut()"> <span  class="reg" href="">Log out</span></li>
     </div>
 </div>
 
