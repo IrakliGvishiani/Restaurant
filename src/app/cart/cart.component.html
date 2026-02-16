@@ -18,4 +18,36 @@
             <P>Total</P>
         </div>
     </div>
+    <div *ngFor="let el of productsArray" class="productsLine">
+        <div class="left">
+            <div class="imageAndEdit">
+                <div class="edit">
+                    <i (click)="removeFromCart(el.product.id)" class="fa-solid fa-xmark"></i>
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </div>
+
+                <div class="image">
+                    <img [src]="el.product.image" alt="">
+                      <p>{{el.product.name}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="qty">
+                <i class="fa-solid fa-circle-plus"></i>
+                <p>1</p>
+                <i class="fa-solid fa-circle-minus"></i>
+            </div>
+
+           <div style="width: 50px;padding-right: 60px;" class="priceDiv">
+             <p style="width: 60px;" class="price">$ {{el.product.price}}</p>
+           </div>
+
+            <div class="totalDiv">
+                <p style="margin-left: 10px;" class="total">$ </p>
+            </div>
+        </div>
+    </div>
+
 </div>

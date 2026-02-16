@@ -17,4 +17,8 @@ export class ApiService {
   postt(url: any, body: any){
     return this.http.post(url,body)
   }
+
+  deletee(url: any){
+    return this.http.delete(url)
+  }
 }

@@ -4,7 +4,7 @@ import { Products } from '../models/products';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Category } from '../models/category';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-main',
   imports: [CommonModule,FormsModule],
@@ -118,6 +118,42 @@ onSpicinessChange(event: Event) {
     this.value = 0
   }
 
+
+  addToCart(productID: number,price:number){
+
+    this.api.postt("https://restaurant.stepprojects.ge/api/Baskets/AddToBasket", {
+      
+        quantity: 1,
+        price: price,
+        productId: productID
+
+    }).subscribe({
+      next: resp => {
+        const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+                        }
+             });
+          Toast.fire({
+          icon: "success",
+         title: "Product added to cart"
+        });
+
+        console.log(resp);
+        
+      },
+      error: err => console.log(err)
+      
+    })
+
+
+  }
 
   data: Products[] = []
   categoryArr: Category[] = []
