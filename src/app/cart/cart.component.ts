@@ -3,7 +3,7 @@ import { ApiService } from '../services/api.service';
 import { Cart } from '../models/cart-model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-cart',
   imports: [CommonModule,FormsModule],
@@ -18,6 +18,20 @@ export class CartComponent {
   ngOnInit(){
     this.getProducts()
   }
+
+
+
+  addQuantity(item: any){
+    item.quantity++
+
+  }
+  decreaseQuantity(item: any){
+    if(item.quantity > 1){
+      item.quantity--
+    }
+  }
+
+
 
   getProducts(){
         this.api.gett("https://restaurant.stepprojects.ge/api/Baskets/GetAll")
@@ -35,22 +49,6 @@ export class CartComponent {
     this.api.deletee(`https://restaurant.stepprojects.ge/api/Baskets/DeleteProduct/${id}`)
     .subscribe({
       next: resp => {
-                const Toast = Swal.mixin({
-                toast: true,
-                position: "top-end",
-                showConfirmButton: false,
-                timer: 2000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                toast.onmouseenter = Swal.stopTimer;
-                toast.onmouseleave = Swal.resumeTimer;
-                                }
-                     });
-                  Toast.fire({
-                  icon: "success",
-                 title: "Product removed from cart"
-                });
-
                this.getProducts()
                 console.log(resp);
                 

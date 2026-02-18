@@ -35,17 +35,17 @@
 
         <div class="right">
             <div class="qty">
-                <i class="fa-solid fa-circle-plus"></i>
-                <p>1</p>
-                <i class="fa-solid fa-circle-minus"></i>
+                <i (click)="addQuantity(el)" class="fa-solid fa-circle-plus"></i>
+                <p>{{el.quantity}}</p>
+                <i (click)="decreaseQuantity(el)" class="fa-solid fa-circle-minus"></i>
             </div>
 
-           <div style="width: 50px;padding-right: 60px;" class="priceDiv">
+           <div style="width: 90px;padding-right: 60px;" class="priceDiv">
              <p style="width: 60px;" class="price">$ {{el.product.price}}</p>
            </div>
 
             <div class="totalDiv">
-                <p style="margin-left: 10px;" class="total">$ </p>
+                <p style="margin-left: 10px;" class="total">$ {{el.product.price * el.quantity}}</p>
             </div>
         </div>
     </div>

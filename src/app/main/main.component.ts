@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Category } from '../models/category';
 import Swal from 'sweetalert2';
+import { Cart } from '../models/cart-model';
 @Component({
   selector: 'app-main',
   imports: [CommonModule,FormsModule],
@@ -121,15 +122,49 @@ onSpicinessChange(event: Event) {
 
   addToCart(productID: number,price:number){
 
-    this.api.postt("https://restaurant.stepprojects.ge/api/Baskets/AddToBasket", {
-      
-        quantity: 1,
-        price: price,
-        productId: productID
 
-    }).subscribe({
-      next: resp => {
-        const Toast = Swal.mixin({
+
+        this.api.gett("https://restaurant.stepprojects.ge/api/Baskets/GetAll")
+        .subscribe({
+          next: (resp : Cart[]) => {
+
+              const exists = resp.some(item => item.product.id === productID)
+            
+             if(exists){
+              this.showToast("info","Product already in the cart")
+             }
+             else {
+            this.api.postt("https://restaurant.stepprojects.ge/api/Baskets/AddToBasket", {
+               quantity: 1,
+               price: price,
+               productId: productID
+
+             }).subscribe({
+           next: resp => {
+
+           this.showToast("success","Added to cart")
+
+           console.log(resp);
+        
+      },
+      error: err => console.log(err)
+      
+    })
+             }
+
+          },
+          error: () => {
+            
+
+          }
+        })
+
+
+
+  }
+
+  showToast(icon: any , message: string){
+            const Toast = Swal.mixin({
         toast: true,
         position: "top-end",
         showConfirmButton: false,
@@ -141,18 +176,9 @@ onSpicinessChange(event: Event) {
                         }
              });
           Toast.fire({
-          icon: "success",
-         title: "Product added to cart"
+          icon: icon,
+         title: message
         });
-
-        console.log(resp);
-        
-      },
-      error: err => console.log(err)
-      
-    })
-
-
   }
 
   data: Products[] = []
