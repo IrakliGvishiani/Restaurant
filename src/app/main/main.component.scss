@@ -79,22 +79,22 @@
             justify-content: center;
 
             .custom-range {
-  -webkit-appearance: none;  /* Chrome/Safari */
-  width: 300px;              /* სიგანე */
-  height: 12px;              /* სიმაღლე */
-  background: #ff0000;          /* track-ის ფონი */
+  -webkit-appearance: none;  
+  width: 300px;              
+  height: 12px;              
+  background: #ff0000;         
   border-radius: 5px;
 }
 
 .range-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 24px;          /* 👈 ზომა */
+  width: 24px;          
   height: 24px;
-  background: rgb(255, 255, 255);      /* 👈 ფერი */
-  border-radius: 50%;   /* მრგვალი */
+  background: rgb(255, 255, 255);      
+  border-radius: 50%;   
   cursor: pointer;
   border: 2px solid rgb(255, 0, 0);
-//   margin-top: -7px;     /* შუაში გასწორება */
+
 }
 
 
