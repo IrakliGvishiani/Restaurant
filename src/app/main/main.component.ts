@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { Category } from '../models/category';
 import Swal from 'sweetalert2';
 import { Cart } from '../models/cart-model';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-main',
   imports: [CommonModule,FormsModule],
@@ -14,7 +15,7 @@ import { Cart } from '../models/cart-model';
 })
 export class MainComponent {
 
-  constructor(private api : ApiService){}
+  constructor(private api : ApiService,private route: Router){}
 
 
   ngOnInit(){
@@ -122,9 +123,11 @@ onSpicinessChange(event: Event) {
 
   addToCart(productID: number,price:number){
 
-
-
-        this.api.gett("https://restaurant.stepprojects.ge/api/Baskets/GetAll")
+      if(!localStorage.getItem("token")){
+       this.route.navigateByUrl("/log-in");
+      }
+      else {
+                this.api.gett("https://restaurant.stepprojects.ge/api/Baskets/GetAll")
         .subscribe({
           next: (resp : Cart[]) => {
 
@@ -158,6 +161,9 @@ onSpicinessChange(event: Event) {
 
           }
         })
+      }
+
+
 
 
 

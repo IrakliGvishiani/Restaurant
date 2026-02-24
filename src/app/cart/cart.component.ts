@@ -17,17 +17,19 @@ export class CartComponent {
 
   ngOnInit(){
     this.getProducts()
+
   }
 
 
 
   addQuantity(item: any){
     item.quantity++
-
+    this.updateCartTotal()
   }
   decreaseQuantity(item: any){
     if(item.quantity > 1){
       item.quantity--
+      this.updateCartTotal()
     }
   }
 
@@ -38,6 +40,7 @@ export class CartComponent {
     .subscribe({
       next: (resp:any) => {
         this.productsArray = resp
+        this.updateCartTotal()
       },
       error: err => console.log(err)
       
@@ -51,12 +54,22 @@ export class CartComponent {
       next: resp => {
                this.getProducts()
                 console.log(resp);
+                this.updateCartTotal()
                 
       },
       error: err => console.log(err)
       
     })
   }
+  
 
+
+  cartTotal: number = 0
+
+  updateCartTotal(){
+    this.cartTotal = this.productsArray.reduce((sum,item) => {
+      return sum + (item.product.price * item.quantity);
+    },0)
+  }
   productsArray: Cart[] = [] 
 }

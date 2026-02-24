@@ -49,7 +49,8 @@ export class HeaderComponent {
   if (result.isConfirmed) {
     localStorage.removeItem("token")
     this.auth.logout()
-    window.location.reload()
+
+
   }
 });
   }

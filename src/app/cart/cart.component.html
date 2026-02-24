@@ -3,19 +3,28 @@
     <p>My Cart</p>
 </div>
 
-<h1 style="font-weight: bold;justify-self: center;padding-top: 50px;">Cart</h1>
+<!-- <h1 style="font-weight: bold;justify-self: center;padding-top: 50px;">Cart</h1> -->
 
 
-<div class="cartMainContainer">
+<!-- <div class="cartMainContainer">
     <div class="topCart">
         <div class="left">
             <p>Product</p>
         </div>
 
         <div class="right">
-            <p>Qty</p>
-            <P>Price</P>
-            <P>Total</P>
+            <div class="qtyCont">
+                  <p>Qty</p>
+            </div>
+            <div class="priceCont">
+                       <P>Price</P>
+            </div>
+            <div style="margin-right: 15px;" class="totalCont">
+                            <P>Total</P>
+            </div>
+          
+     
+
         </div>
     </div>
     <div *ngFor="let el of productsArray" class="productsLine">
@@ -34,13 +43,16 @@
         </div>
 
         <div class="right">
-            <div class="qty">
+            <div class="qtyDiv">
+                            <div class="qty">
                 <i (click)="addQuantity(el)" class="fa-solid fa-circle-plus"></i>
                 <p>{{el.quantity}}</p>
                 <i (click)="decreaseQuantity(el)" class="fa-solid fa-circle-minus"></i>
             </div>
+            </div>
 
-           <div style="width: 90px;padding-right: 60px;" class="priceDiv">
+
+           <div class="priceDiv">
              <p style="width: 60px;" class="price">$ {{el.product.price}}</p>
            </div>
 
@@ -50,4 +62,63 @@
         </div>
     </div>
 
+
+
+    <h1>TOTAL: $ {{cartTotal}}</h1>
+</div> -->
+
+
+
+<div class="cart-container">
+  <h1 class="cart-title">Cart</h1>
+
+  <div class="cart-table" *ngFor="let el of productsArray">
+
+    <!-- Header -->
+    <div class="cart-header">
+      <div class="col-product">Product</div>
+      <div class="col-qty">Qty</div>
+      <div class="col-price">Price</div>
+      <div class="col-total">Total</div>
+    </div>
+
+    <!-- Product Row -->
+    <div class="cart-row">
+
+      <div class="col-product product-info">
+        <div class="actions">
+          <span (click)="removeFromCart(el.product.id)" class="remove">✕</span>
+          <span class="edit">✎</span>
+        </div>
+
+        <img [src]="el.product.image" alt="Product">
+
+        <span class="product-name">{{el.product.name}}</span>
+      </div>
+
+      <div class="col-qty">
+        <div class="qty-box">
+          <button (click)="decreaseQuantity(el)">-</button>
+          <span>{{el.quantity}}</span>
+          <button (click)="addQuantity(el)">+</button>
+        </div>
+      </div>
+
+      <div class="col-price"> $ {{el.product.price}}</div>
+      <div class="col-total"> $ {{el.product.price * el.quantity}}</div>
+
+    </div>
+
+  </div>
+
+  <!-- Bottom Section -->
+  <div class="cart-bottom">
+    <div class="total">
+      Total : $<span>{{cartTotal}}</span>
+    </div>
+
+    <button class="checkout-btn">
+      PROCEED TO CHECKOUT
+    </button>
+  </div>
 </div>

@@ -14,7 +14,7 @@ export class InterceptorService implements HttpInterceptor{
         catchError( (err : any) => {
               if(err.status == 400){
                 console.log("bad request");
-                this.errserv.setErrMessage("Bad Request!")
+                this.errserv.setErrMessage("Request Failed! Try again.")
                 this.errserv.showDialog()
               }
                else if(err.status == 404){
@@ -28,7 +28,7 @@ export class InterceptorService implements HttpInterceptor{
                 this.errserv.showDialog()
               }
               else if(err.status == 500){
-                console.log("internal server error");
+                console.log("internal server error!");
               }
             
               return  throwError(() => err.status)
